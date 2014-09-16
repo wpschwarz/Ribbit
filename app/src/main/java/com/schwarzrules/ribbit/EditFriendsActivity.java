@@ -30,6 +30,7 @@ public class EditFriendsActivity extends ListActivity {
     protected ParseRelation<ParseUser> mFriendsRelation;
     protected ParseUser mCurrentUser;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -57,6 +57,17 @@ public class FriendsFragment extends ListFragment {
                 getActivity().setProgressBarIndeterminateVisibility(false);
                 if(e == null){
 
+                    mFriends = friends;
+
+                    String[] usernames = new String[mFriends.size()];
+                    int i = 0;
+                    for (ParseUser parseUser : mFriends) {
+                        usernames[i] = parseUser.getUsername();
+                        i++;
+                    }
+                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(getListView().getContext(), android.R.layout.simple_list_item_1, usernames);
+                    setListAdapter(adapter);
+
                 }
                 else{
                     Log.e(TAG, e.getMessage());
@@ -67,18 +78,6 @@ public class FriendsFragment extends ListFragment {
                     AlertDialog dialog =  builder.create();
                     dialog.show();
                 }
-
-                mFriends = friends;
-
-                String[] usernames = new String[mFriends.size()];
-                int i = 0;
-                for (ParseUser parseUser : mFriends) {
-                    usernames[i] = parseUser.getUsername();
-                    i++;
-                }
-                ArrayAdapter<String> adapter = new ArrayAdapter<String>(getListView().getContext(), android.R.layout.simple_list_item_1, usernames);
-                setListAdapter(adapter);
-
             }
 
         });
